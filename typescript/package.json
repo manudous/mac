@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "pre-push":"run-p type-check console-runner",
     "start": "run-p type-check console-runners",
     "console-runners": "babel-node --extensions \".ts\" index.ts",
     "type-check": "tsc --noEmit"
