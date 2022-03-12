@@ -1,7 +1,9 @@
 name: create typescript model workflow
 
-on: pull_request
-
+on:
+  pull_request:
+    types: [closed]
+    
 jobs:
   jsonschema-to-typescript:
     runs-on: ubuntu-latest
@@ -24,5 +26,5 @@ jobs:
       - name: Commit
         run: git commit -m "Update typescript model"
       - name: Push
-        run: git push
+        run: git push origin master
      
