@@ -1,27 +1,10 @@
-import { prompt } from 'inquirer';
-
-
-const consoleRunnerList = ['from-JSONSchema-To-TypeScript'];
+import { compileFromFile } from "json-schema-to-typescript";
+import { writeFileSync } from "fs";
 
 (async () => {
- 
-  let exit = false;
-
-  while (!exit) {
-    const { consoleRunner } = await prompt([
-      {
-        name: 'consoleRunner',
-        type: 'list',
-        message: 'Which console-runner do you want to run?',
-        choices: [...consoleRunnerList, 'exit'],
-      },
-    ]);
-
-    if (consoleRunner !== 'exit') {
-      const { run } = require(`./${consoleRunner}`);
-      await run();
-    } else {
-      exit = true;
-    }
+  try {
+    writeFileSync("schema.ts", await compileFromFile("../schema/schema.json"));
+  } catch (error) {
+    console.error(error);
   }
 })();
