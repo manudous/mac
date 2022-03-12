@@ -13,10 +13,14 @@ jobs:
         working-directory: typescript
     steps:
       - uses: actions/checkout@v2
-      - uses: 1arp/create-a-file-action@0.2
-        with:
-          path: 'src'
-          file: 'foo.bar'
-          content: |
-            Hello
-            World
+      - name: Install
+        run: npm install
+      - name: Generate
+        run: npm start
+      - name: Add to git
+        run: git add .
+      - name: Commit
+        run: git commit -m "Update typescript model"
+      - name: Push
+        run: git push origin feature/jsonschema-to-typescript
+     
