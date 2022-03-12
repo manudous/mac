@@ -12,9 +12,14 @@ jobs:
       run:
         working-directory: typescript
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Git config
+        run: |
+          git config --global user.email "cd-user@my-app.com"
+          git config --global user.name "cd-user"
       - name: Install
-        run: npm install
+        run: npm ci
       - name: Generate
         run: npm start
       - name: Add to git
