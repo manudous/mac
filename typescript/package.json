@@ -1,0 +1,26 @@
+{
+  "name": "typescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "run-p type-check:watch console-runners",
+    "console-runners": "nodemon --no-stdin --exec babel-node --extensions \".ts\" index.ts",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "npm run type-check -- --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.5",
+    "@babel/node": "^7.16.8",
+    "@babel/preset-typescript": "^7.16.7",
+    "@types/inquirer": "^8.2.0",
+    "inquirer": "^8.2.1",
+    "nodemon": "^2.0.15",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^4.6.2"
+  }
+}
