@@ -1,0 +1,19 @@
+name: Continuos Integration workflow
+
+on: pull_request
+
+jobs:
+  jsonschema-to-typescript:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: typescript
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm install
+      - name: Create TypeScript schema
+        run: npm start
+     
+      
