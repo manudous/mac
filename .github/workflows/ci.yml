@@ -1,6 +1,9 @@
-name: Continuos Integration workflow
+name: create typescript model workflow
 
-on: pull_request
+on:
+  push:
+    branches:
+      - feature/jsonschema-to-typescript
 
 jobs:
   jsonschema-to-typescript:
@@ -13,7 +16,11 @@ jobs:
         uses: actions/checkout@v3
       - name: Install dependencies
         run: npm install
-      - name: Create TypeScript schema
-        run: npm start
-     
-      
+      - name: Create files
+      - uses: 1arp/create-a-file-action@0.2
+        with:
+          path: "src"
+          file: "foo.bar"
+          content: |
+            Hello
+            World
