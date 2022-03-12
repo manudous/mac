@@ -24,5 +24,5 @@ jobs:
       - name: Commit
         run: git commit -m "Update typescript model"
       - name: Push
-        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        run: echo ::set-output name=short_ref::${GITHUB_REF#refs/*/}
      
