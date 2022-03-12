@@ -1,9 +1,6 @@
 name: create typescript model workflow
 
-on:
-  push:
-    branches:
-      - feature/jsonschema-to-typescript
+on: pull_request
 
 jobs:
   jsonschema-to-typescript:
@@ -27,5 +24,5 @@ jobs:
       - name: Commit
         run: git commit -m "Update typescript model"
       - name: Push
-        run: git push origin feature/jsonschema-to-typescript
+        run: git push origin master
      
