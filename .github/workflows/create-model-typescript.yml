@@ -1,0 +1,30 @@
+name: create typescript model workflow
+
+on:
+  pull_request:
+    types: [closed]
+    
+jobs:
+  jsonschema-to-typescript:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: typescript
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Git config
+        run: |
+          git config --global user.email "cd-user@my-app.com"
+          git config --global user.name "cd-user"
+      - name: Install
+        run: npm ci
+      - name: Generate
+        run: npm start
+      - name: Add to git
+        run: git add .
+      - name: Commit
+        run: git commit -m "Update typescript model"
+      - name: Push
+        run: git push origin master
+     
