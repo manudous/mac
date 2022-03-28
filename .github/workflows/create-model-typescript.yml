@@ -2,7 +2,10 @@ name: create typescript model workflow
 
 on:
   pull_request:
-    types: [closed]
+    types: 
+      - closed
+    branches: 
+      - master
     
 jobs:
   jsonschema-to-typescript:
