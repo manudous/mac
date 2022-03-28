@@ -1,9 +1,16 @@
 import { compileFromFile } from "json-schema-to-typescript";
-import { writeFileSync } from "fs";
+import { writeFileSync, existsSync, mkdirSync } from "fs";
 
 (async () => {
   try {
-    writeFileSync("../../typescript/schema.ts", await compileFromFile("../../schema/schema.json"));
+    const dir = "../../typescript";
+    if (!existsSync(dir)) {
+      mkdirSync(dir);
+    }
+    writeFileSync(
+      "../../typescript/schema.ts",
+      await compileFromFile("../../schema/schema.json")
+    );
   } catch (error) {
     console.error(error);
   }
