@@ -4,8 +4,6 @@ on:
   pull_request:
     types: 
       - closed
-    branches: 
-      - master
     
 jobs:
   jsonschema-to-typescript:
@@ -29,5 +27,5 @@ jobs:
       - name: Commit
         run: git commit -m "Update typescript model"
       - name: Push
-        run: git push origin master
+        run: git push
      
