@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "pre-push":"run-p type-check console-runners",
-    "start": "run-p type-check console-runners",
-    "console-runners": "babel-node --extensions \".ts\" index.ts",
+    "prestart": "rimraf ../../typescript",
+    "start": "run-p type-check typescript-generator",
+    "typescript-generator": "babel-node --extensions \".ts\" index.ts",
     "type-check": "tsc --noEmit"
   },
   "keywords": [],
@@ -18,10 +18,9 @@
     "@babel/node": "^7.16.8",
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-typescript": "^7.16.7",
+    "json-schema-to-typescript": "^10.1.5",
     "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2",
     "typescript": "^4.6.2"
-  },
-  "dependencies": {
-    "json-schema-to-typescript": "^10.1.5"
   }
 }
